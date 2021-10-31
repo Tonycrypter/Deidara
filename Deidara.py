@@ -2,7 +2,8 @@ import json
 import requests
 import threading
 
-def subdomain():
+
+def subdomain_brute():
     domain = input("Please Enter the domain to be scanned: Example: test.com ")
     file = open("subdomains.txt")
     content = file.read()
@@ -19,6 +20,13 @@ def subdomain():
             print (d1)
             discovered_subdomains.append(url)
 
-subdomain()
-t = threading.Thread(target=subdomain)
-t.start()
+
+threads = []
+
+for _ in range(1):
+    t = threading.Thread(target=subdomain_brute)
+    t.start()
+    threads.append(t)
+
+for thread in threads:
+    thread.join()
