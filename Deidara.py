@@ -23,7 +23,7 @@ def subdomain_brute():
 
 threads = []
 
-for _ in range(1):
+for _ in range(50):
     t = threading.Thread(target=subdomain_brute)
     t.start()
     threads.append(t)
